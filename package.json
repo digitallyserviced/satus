@@ -3,9 +3,9 @@
   "version": "1.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "tinacms dev -c \"next dev\"",
+    "build": "tinacms build && next build",
+    "start": "tinacms build && next start",
     "lint": "next lint",
     "postbuild": "next-sitemap",
     "analyze": "cross-env ANALYZE=true next build",
@@ -14,12 +14,13 @@
   },
   "dependencies": {
     "@ducanh2912/next-pwa": "^9.2.0",
-    "@studio-freight/compono": "^0.0.21",
+    "@studio-freight/compono": "^0.0.34",
     "@studio-freight/hamo": "^0.6.19",
     "@studio-freight/react-lenis": "^0.0.25",
     "@studio-freight/tempus": "^0.0.38",
     "@theatre/core": "^0.6.1",
     "@theatre/studio": "^0.6.1",
+    "@tinacms/cli": "^1.5.26",
     "clsx": "^1.2.1",
     "gsap": "3.12.2",
     "idb-keyval": "^6.2.1",
@@ -30,6 +31,7 @@
     "react-dom": "18.2.0",
     "sass": "^1.63.6",
     "stats.js": "^0.17.0",
+    "tinacms": "^1.5.17",
     "zustand": "4.3.9"
   },
   "devDependencies": {

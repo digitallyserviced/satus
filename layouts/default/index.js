@@ -8,7 +8,12 @@ import { useEffect } from 'react'
 import s from './layout.module.scss'
 
 export function Layout({
-  seo = { title: '', description: '', image: '', keywords: '' },
+  seo = {
+    title: '',
+    description: '',
+    image: '',
+    keywords: '',
+  },
   children,
   theme = 'light',
   className,
