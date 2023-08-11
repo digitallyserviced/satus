@@ -47,9 +47,10 @@ example: `https://satus.studiofreight.com/_debug/orchestra`
 
 ## Flavors
 
-- [Light](https://github.com/studio-freight/satus) (you're here)
+- [Light](https://github.com/studio-freight/satus)
 - [With Shopify](https://github.com/studio-freight/satus/tree/with-shopify)
-- [With Contentful](https://github.com/studio-freight/satus/tree/with-contentful)
+- [With Tina cms](https://github.com/studio-freight/satus/tree/with-tina-cms) (you're here)
+- [With Storyblok](https://github.com/studio-freight/satus/tree/with-storyblok)
 - [With react-three-fiber](https://github.com/studio-freight/satus/tree/with-r3f)
 - [With OGL](https://github.com/studio-freight/satus/tree/with-ogl)
 
