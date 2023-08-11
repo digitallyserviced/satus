@@ -1,5 +1,6 @@
 ---
 sections:
-  - title: this is title
+  - title: tina title cms
     _template: hero
 ---
+
