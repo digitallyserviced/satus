@@ -19,10 +19,15 @@ const link = {
 }
 
 const titleTextLink = {
-  label: 'TitleTextLink',
+  label: 'Title & Text & Link',
   name: 'titleTextLink',
   type: 'object',
   list: true,
+  ui: {
+    itemProps: (item) => ({
+      label: `${item?.title}`,
+    }),
+  },
   fields: [
     {
       type: 'string',
@@ -44,7 +49,7 @@ const titleTextLink = {
   ],
 }
 
-const stringList = ({ label = 'StringList', name = 'stringList' }) => {
+const stringList = ({ label = 'String List', name = 'stringList' }) => {
   return {
     label,
     name,
