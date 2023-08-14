@@ -3,17 +3,22 @@ import cn from 'clsx'
 import { Navigation } from 'components/navigation'
 import { useStore } from 'libs/store'
 import { forwardRef } from 'react'
+import { tinaField } from 'tinacms/dist/react'
 import { shallow } from 'zustand/shallow'
 import s from './header.module.scss'
 
-export const Header = forwardRef((_, ref) => {
+export const Header = forwardRef(({ title, links, _content_source }, ref) => {
   const [navIsOpened, setNavIsOpened] = useStore(
     ({ navIsOpened, setNavIsOpened }) => [navIsOpened, setNavIsOpened],
-    shallow
+    shallow,
   )
 
   return (
-    <header className={s.header} ref={ref}>
+    <header
+      className={s.header}
+      ref={ref}
+      data-tina-field={tinaField({ _content_source })}
+    >
       <Navigation />
       <div className={cn('layout-block', s.head)}>
         <button
@@ -21,11 +26,14 @@ export const Header = forwardRef((_, ref) => {
             setNavIsOpened(!navIsOpened)
           }}
         >
-          menu
+          {title}
         </button>
         <div>
-          <Link href="/">home</Link>/<Link href="/gsap">gsap</Link>/
-          <Link href="/contact">contact</Link>
+          {links.map(({ link }) => (
+            <Link href={link.url} key={link.text}>
+              {link.text}
+            </Link>
+          ))}
         </div>
       </div>
     </header>

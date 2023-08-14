@@ -14,6 +14,8 @@ export function Layout({
     image: '',
     keywords: '',
   },
+  header,
+  footer,
   children,
   theme = 'light',
   className,
@@ -40,9 +42,9 @@ export function Layout({
         <div className={cn(`theme-${theme}`, s.layout, className)}>
           <Cursor />
           <Scrollbar />
-          <Header />
+          <Header {...header} />
           <main className={s.main}>{children}</main>
-          <Footer />
+          <Footer {...footer} />
         </div>
       </Lenis>
     </>

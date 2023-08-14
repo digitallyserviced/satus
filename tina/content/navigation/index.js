@@ -1,5 +1,5 @@
 import { firstLayerBlocks } from '../blocks'
-const { stringList, link } = firstLayerBlocks
+const { link } = firstLayerBlocks
 
 const header = {
   name: 'header',
@@ -31,21 +31,12 @@ const footer = {
       label: 'Title',
       name: 'title',
     },
-    stringList({ label: 'Marquee', name: 'marquee' }),
     {
       type: 'object',
       label: 'Links',
       name: 'links',
       list: true,
-      fields: [
-        {
-          name: 'linkPair',
-          label: 'LinkPair',
-          type: 'object',
-          list: true,
-          fields: [link],
-        },
-      ],
+      fields: [link],
     },
   ],
 }
