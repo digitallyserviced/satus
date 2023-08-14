@@ -11,6 +11,9 @@ dependencies:
   '@ducanh2912/next-pwa':
     specifier: ^9.2.0
     version: 9.4.0(next@13.4.9)
+  '@radix-ui/react-select':
+    specifier: ^1.2.2
+    version: 1.2.2(react-dom@18.2.0)(react@18.2.0)
   '@studio-freight/compono':
     specifier: ^0.0.34
     version: 0.0.34(next@13.4.9)(react-dom@18.2.0)(react@18.2.0)

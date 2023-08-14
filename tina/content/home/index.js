@@ -1,4 +1,5 @@
 import { Collection } from '../'
+import { hubspotForms } from '../custom-components/hubspot-forms'
 import { slider } from '../custom-components/slider'
 
 const hero = {
@@ -21,6 +22,7 @@ const hero = {
         step: 0.05,
       },
     }),
+    hubspotForms(),
   ],
 }
 

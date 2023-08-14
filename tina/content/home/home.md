@@ -2,6 +2,7 @@
 sections:
   - title: tina title cms
     opacity: 1
+    hubspotForms: 'name:Website Contact Form-id:de44d66e-443e-4708-beb5-538221a0e90c'
     _template: hero
 global:
   - header:
