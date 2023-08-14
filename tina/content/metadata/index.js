@@ -1,5 +1,5 @@
 import { firstLayerBlocks } from '../blocks'
-const { stringList } = firstLayerBlocks
+const { stringList, colorPallete } = firstLayerBlocks
 
 export const metadata = {
   name: 'metadata',
@@ -38,21 +38,9 @@ export const metadata = {
       label: 'Theme',
       name: 'theme',
       fields: [
-        {
-          type: 'string',
-          label: 'Mask',
-          name: 'mask',
-        },
-        {
-          type: 'string',
-          label: 'Tile',
-          name: 'tile',
-        },
-        {
-          type: 'string',
-          label: 'Color',
-          name: 'color',
-        },
+        colorPallete({ label: 'Mask', name: 'mask' }),
+        colorPallete({ label: 'Tile', name: 'tile' }),
+        colorPallete({ label: 'Color', name: 'color' }),
       ],
     },
   ],

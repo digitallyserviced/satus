@@ -1,3 +1,6 @@
+// const { colors } = require('config/variables.js') not working
+const colors = ['#000000', '#ffffff']
+
 const link = {
   label: 'Link',
   name: 'link',
@@ -66,8 +69,21 @@ const stringList = ({ label = 'String List', name = 'stringList' }) => {
   }
 }
 
+const colorPallete = ({ label = 'Color', name = 'color' }) => ({
+  type: 'string',
+  label,
+  name,
+  ui: {
+    component: 'color',
+    colorFormat: 'hex',
+    colors,
+    widget: 'block',
+  },
+})
+
 export const firstLayerBlocks = {
   link,
   titleTextLink,
   stringList,
+  colorPallete,
 }

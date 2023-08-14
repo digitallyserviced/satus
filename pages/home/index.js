@@ -12,7 +12,7 @@ export default function Home({ home }) {
   return (
     <Layout theme="light">
       <section className={s.content}>
-        <h1 className={s.title} style={{ opacity: hero.slider }}>
+        <h1 className={s.title} style={{ opacity: hero.opacity }}>
           {hero.title}
         </h1>
       </section>

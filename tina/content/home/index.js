@@ -1,5 +1,5 @@
 import { Collection } from '../'
-import { slider } from '../custom-components'
+import { slider } from '../custom-components/slider'
 
 const hero = {
   name: 'hero',
@@ -10,7 +10,17 @@ const hero = {
       label: 'Title',
       name: 'title',
     },
-    slider(),
+    slider({
+      name: 'opacity',
+      label: 'Opacity',
+      sliderProps: {
+        defaultValue: 1,
+        label: 'opacity',
+        min: 0,
+        max: 1,
+        step: 0.05,
+      },
+    }),
   ],
 }
 
