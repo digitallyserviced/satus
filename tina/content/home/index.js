@@ -1,4 +1,5 @@
 import { Collection } from '../'
+import { slider } from '../custom-components'
 
 const hero = {
   name: 'hero',
@@ -9,6 +10,7 @@ const hero = {
       label: 'Title',
       name: 'title',
     },
+    slider(),
   ],
 }
 
