@@ -28,11 +28,6 @@ const fetchHubspotForms = async () => {
   } catch (e) {
     console.error(e)
   }
-
-  success(
-    res,
-    response.results.map((form) => ({ id: form.id, name: form.name })),
-  )
 }
 
 export default async function get(req, res) {
