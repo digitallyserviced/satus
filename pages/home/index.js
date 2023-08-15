@@ -15,7 +15,6 @@ export default function Home({ home }) {
     <Layout theme="light" {...navigation}>
       <section className={s.content} data-tina-field={tinaField(hero)}>
         <h1 style={{ opacity: hero.opacity }}> {hero.title}</h1>
-        <p>{hero.hubspotForms.split('-')[0]}</p>
       </section>
     </Layout>
   )
