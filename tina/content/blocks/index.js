@@ -81,9 +81,30 @@ const colorPallete = ({ label = 'Color', name = 'color' }) => ({
   },
 })
 
+const media = ({ label = 'Media', name = 'media' }) => ({
+  label,
+  name,
+  type: 'object',
+  fields: [
+    {
+      type: 'string',
+      label: 'Caption',
+      name: 'caption',
+      required: true,
+    },
+    {
+      type: 'image',
+      label: 'Source',
+      name: 'source',
+      required: true,
+    },
+  ],
+})
+
 export const firstLayerBlocks = {
   link,
   titleTextLink,
   stringList,
   colorPallete,
+  media,
 }
