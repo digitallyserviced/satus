@@ -15,7 +15,7 @@
   "dependencies": {
     "@ducanh2912/next-pwa": "^9.2.0",
     "@radix-ui/react-select": "^1.2.2",
-    "@studio-freight/compono": "^0.0.34",
+    "@studio-freight/compono": "^0.0.39",
     "@studio-freight/hamo": "^0.6.19",
     "@studio-freight/react-lenis": "0.0.26",
     "@studio-freight/tempus": "^0.0.38",
