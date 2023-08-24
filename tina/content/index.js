@@ -14,6 +14,13 @@ export class Collection {
   set setFields(input) {
     this.fields = [
       {
+        name: 'title',
+        label: 'Title',
+        type: 'string',
+        required: true,
+        isTitle: true,
+      },
+      {
         name: 'global',
         label: 'Global',
         type: 'object',

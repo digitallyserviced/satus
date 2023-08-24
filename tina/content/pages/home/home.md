@@ -1,4 +1,5 @@
 ---
+title: Home
 sections:
   - title: tina title cms
     opacity: 1
