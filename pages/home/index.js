@@ -1,7 +1,7 @@
 import { useTinaObjects } from 'hooks/use-tina'
 import { Layout } from 'layouts/default'
+import { client } from 'tina/__generated__/client'
 import { tinaField } from 'tinacms/dist/react'
-import { client } from '../../tina/__generated__/client'
 import s from './home.module.scss'
 
 const pageId = 'home'

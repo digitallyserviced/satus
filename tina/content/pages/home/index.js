@@ -1,6 +1,6 @@
-import { Collection } from '../'
-import { hubspotForms } from '../custom-components/hubspot-forms'
-import { slider } from '../custom-components/slider'
+import { Collection } from '../../'
+import { hubspotForms } from '../../custom-components/hubspot-forms'
+import { slider } from '../../custom-components/slider'
 
 const hero = {
   name: 'hero',
@@ -26,7 +26,12 @@ const hero = {
   ],
 }
 
-const collection = new Collection('home', 'Home', 'tina/content/home', 'md')
+const collection = new Collection(
+  'home',
+  'Home',
+  'tina/content/pages/home',
+  'md',
+)
 collection.setFields = [hero]
 collection.setUi = () => '/home'
 

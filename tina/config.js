@@ -1,7 +1,7 @@
 import { defineConfig } from 'tinacms'
-import { homeCollection } from './content/home/index.js'
+import { homeCollection } from './content/pages/home/index.js'
 
-const branch = process.env.VERCEL_GIT_COMMIT_REF || 'with-tina-cms'
+const branch = process.env.VERCEL_GIT_COMMIT_REF || 'with-tina-cms' // change this to your currrent branch
 
 export default defineConfig({
   branch,
