@@ -44,4 +44,18 @@ export const metadata = {
       ],
     },
   ],
+  ui: {
+    defaultItem: {
+      title: 'Metadata',
+      description: 'Metadata description',
+      keywords: ['Metadata'],
+      image: '/cms/sf-og.jpg',
+      twitterHandle: '@tina_cms',
+      theme: {
+        mask: '#000000',
+        tile: '#ffffff',
+        color: '#000000',
+      },
+    },
+  },
 }

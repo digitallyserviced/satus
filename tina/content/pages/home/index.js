@@ -1,15 +1,25 @@
 import { Collection } from '../../'
-import { hubspotForms } from '../../custom-components/hubspot-forms'
 import { slider } from '../../custom-components/slider'
 
 const hero = {
   name: 'hero',
   label: 'Hero',
+  type: 'object',
   fields: [
     {
-      type: 'string',
-      label: 'Title',
       name: 'title',
+      label: 'Title',
+      type: 'string',
+      required: true,
+    },
+    {
+      name: 'text',
+      label: 'Text',
+      type: 'string',
+      required: true,
+      ui: {
+        component: 'textarea',
+      },
     },
     slider({
       name: 'opacity',
@@ -22,8 +32,14 @@ const hero = {
         step: 0.05,
       },
     }),
-    hubspotForms(),
   ],
+  ui: {
+    defaultItem: {
+      title: 'Title',
+      text: 'Text',
+      opacity: 1,
+    },
+  },
 }
 
 const collection = new Collection(

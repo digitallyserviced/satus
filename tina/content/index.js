@@ -9,6 +9,7 @@ export class Collection {
     this.format = format
     this.fields = []
     this.ui = null
+    this.match = null
   }
 
   set setFields(input) {
@@ -19,6 +20,16 @@ export class Collection {
         type: 'string',
         required: true,
         isTitle: true,
+        ui: {
+          description:
+            'this field is for indexing purposes and text will be slugified',
+          parse: (val) =>
+            val &&
+            val
+              .toLowerCase()
+              .replace(/ /g, '-')
+              .replace(/[^\w-]+/g, ''),
+        },
       },
       {
         name: 'global',
@@ -26,6 +37,7 @@ export class Collection {
         type: 'object',
         list: true,
         templates: [navigation, metadata],
+        searchable: false,
       },
       {
         name: 'sections',
@@ -33,11 +45,16 @@ export class Collection {
         type: 'object',
         list: true,
         templates: [...input],
+        searchable: false,
       },
     ]
   }
 
   set setUi(route) {
     this.ui = { router: route }
+  }
+
+  set setMatch(exceptions) {
+    this.match = exceptions
   }
 }

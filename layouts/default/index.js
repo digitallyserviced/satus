@@ -43,9 +43,9 @@ export function Layout({
         <div className={cn(`theme-${theme}`, s.layout, className)}>
           <Cursor />
           <Scrollbar />
-          <Header {...header} />
+          <Header data={header} />
           <main className={s.main}>{children}</main>
-          <Footer {...footer} />
+          <Footer data={footer} />
         </div>
       </Lenis>
     </>
