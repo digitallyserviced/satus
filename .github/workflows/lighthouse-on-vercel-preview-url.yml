@@ -2,9 +2,12 @@ name: Vercel Preview URL Lighthouse Audit
 
 on:
   push:
+    paths-ignore:
+      - 'tina/**'
+      - 'public/cms/**'
     branches:
-      - main
-
+      - 'main'
+      
 jobs:
   generate_lighthouse_audit:
     timeout-minutes: 30
