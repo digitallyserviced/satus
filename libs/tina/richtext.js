@@ -3,7 +3,7 @@ import { TinaMarkdown } from 'tinacms/dist/rich-text'
 import s from './richtext.module.scss'
 
 export const RichText = ({ content, components = {} }) => {
-  return (
+  return content ? (
     <TinaMarkdown
       content={content}
       components={{
@@ -18,6 +18,8 @@ export const RichText = ({ content, components = {} }) => {
         ...components,
       }}
     />
+  ) : (
+    <span>Enter text</span>
   )
 }
 
