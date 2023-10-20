@@ -4,19 +4,20 @@ import { tinaField } from 'tinacms/dist/react'
 import s from './footer.module.scss'
 
 export function Footer({ data }) {
+  if (!data) return null
   const { links } = data
 
   return (
     <footer className={cn(s.footer, 'layout-block')}>
-      {links.map(({ link, _content_source }) => (
+      {links?.map(({ text, url, _content_source }) => (
         <Link
-          href={link?.url}
+          href={url}
           target="_blank"
           className="link"
-          key={link?.url}
+          key={url}
           data-tina-field={tinaField({ _content_source })}
         >
-          {link?.text}
+          {text}
         </Link>
       ))}
     </footer>

@@ -7,10 +7,12 @@ import { tinaField } from 'tinacms/dist/react'
 import s from './header.module.scss'
 
 export const Header = forwardRef(({ data }, ref) => {
-  const { title, links } = data
   const [isNavOpened, setIsNavOpened] = useStore(
     ({ isNavOpened, setIsNavOpened }) => [isNavOpened, setIsNavOpened],
   )
+
+  if (!data) return null
+  const { title, links } = data
 
   return (
     <header className={s.header} ref={ref}>
@@ -27,15 +29,15 @@ export const Header = forwardRef(({ data }, ref) => {
           {title}
         </button>
         <div>
-          {links.map(({ link, _content_source }) => (
+          {links?.map(({ text, url, _content_source }) => (
             <Link
-              href={link?.url}
+              href={url}
               target="_blank"
               className="link"
-              key={link?.url}
+              key={url}
               data-tina-field={tinaField({ _content_source })}
             >
-              {link?.text}
+              {text}
             </Link>
           ))}
         </div>

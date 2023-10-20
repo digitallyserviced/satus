@@ -12,35 +12,19 @@ const colors = [
   '#BDFFFF',
 ]
 
-const link = ({ label = 'Link', name = 'link' } = {}) => ({
+const colorPallete = ({ label = 'Color', name = 'color' }) => ({
+  type: 'string',
   label,
   name,
-  type: 'object',
   ui: {
-    itemProps: (item) => ({
-      label: `${item?.text}`,
-    }),
-    defaultItem: {
-      text: 'Link Text',
-      url: 'Url',
-    },
+    component: 'color',
+    colorFormat: 'hex',
+    colors,
+    widget: 'block',
   },
-  fields: [
-    {
-      type: 'string',
-      label: 'Text',
-      name: 'text',
-      required: true,
-    },
-    {
-      type: 'string',
-      label: 'Url',
-      name: 'url',
-      required: true,
-    },
-  ],
 })
 
+//* start Needs rework
 const internalLink = ({ label = 'Link', name = 'link', collections }) => ({
   label,
   name,
@@ -48,17 +32,79 @@ const internalLink = ({ label = 'Link', name = 'link', collections }) => ({
   collections,
 })
 
-const titleTextLink = ({
-  label = 'Title & Text & Link',
-  name = 'titleTextLink',
+const internalLinkWithMedia = ({
+  label = 'Link',
+  name = 'link',
+  collections,
 }) => ({
   label,
   name,
   type: 'object',
+  fields: [
+    internalLink({ collections }),
+    media({ label: 'Media', name: 'media' }),
+  ],
+})
+
+//* end Needs rework
+
+const link = ({
+  label = 'Link',
+  name = 'link',
+  required = true,
+  list = false,
+  max = null,
+} = {}) => ({
+  label,
+  name,
+  list,
+  type: 'object',
+  ui: {
+    itemProps: (item) => ({
+      label: `${item?.text}`,
+    }),
+    validate: (value) => {
+      if (typeof value === 'undefined' && required) return 'Cannot be empty'
+      if (max && value && value.length > max)
+        return `Cannot be more than ${max} items`
+    },
+  },
+  fields: [
+    {
+      type: 'string',
+      label: 'Text',
+      name: 'text',
+      required,
+    },
+    {
+      type: 'string',
+      label: 'Url',
+      name: 'url',
+      required,
+    },
+  ],
+})
+
+const titleTextLink = ({
+  label = 'Title & Text & Link',
+  name = 'titleTextLink',
+  required = true,
+  list = false,
+  max = null,
+}) => ({
+  label,
+  name,
+  type: 'object',
+  list,
   ui: {
     itemProps: (item) => ({
       label: `${item?.title}`,
     }),
+    validate: (value) => {
+      if (typeof value === 'undefined' && required) return 'Cannot be empty'
+      if (max && value && value.length > max)
+        return `Cannot be more than ${max} items`
+    },
   },
   fields: [
     {
@@ -82,7 +128,11 @@ const titleTextLink = ({
   ],
 })
 
-const stringList = ({ label = 'String List', name = 'stringList' }) => ({
+const stringList = ({
+  label = 'String List',
+  name = 'stringList',
+  required = true,
+}) => ({
   label,
   name,
   type: 'string',
@@ -92,27 +142,22 @@ const stringList = ({ label = 'String List', name = 'stringList' }) => ({
       type: 'string',
       label: 'Text',
       name: 'text',
-      required: true,
+      required,
     },
   ],
 })
 
-const colorPallete = ({ label = 'Color', name = 'color' }) => ({
-  type: 'string',
-  label,
-  name,
-  ui: {
-    component: 'color',
-    colorFormat: 'hex',
-    colors,
-    widget: 'block',
-  },
-})
-
-const media = ({ label = 'Media', name = 'media', required = true } = {}) => ({
+const media = ({
+  label = 'Media',
+  name = 'media',
+  required = true,
+  list = false,
+  max = null,
+} = {}) => ({
   label,
   name,
   type: 'object',
+  list,
   fields: [
     {
       type: 'string',
@@ -127,21 +172,29 @@ const media = ({ label = 'Media', name = 'media', required = true } = {}) => ({
       required,
     },
   ],
+  ui: {
+    itemProps: (item) => ({
+      label: `${item?.caption}`,
+    }),
+    validate: (value) => {
+      if (typeof value === 'undefined' && required) return 'Cannot be empty'
+      if (max && value && value.length > max)
+        return `Cannot be more than ${max} items`
+    },
+  },
 })
 
 const mediaMobileFallback = ({
   label = 'Media',
   name = 'media',
   required = true,
+  list = false,
+  max = null,
 }) => ({
   label,
   name,
   type: 'object',
-  // ui: {
-  //   validate: (value) => {
-  //     if (!value && required) return 'Required'
-  //   },
-  // },
+  list,
   fields: [
     {
       type: 'string',
@@ -168,43 +221,29 @@ const mediaMobileFallback = ({
       required: false,
     },
   ],
+  ui: {
+    itemProps: (item) => ({
+      label: `${item?.caption}`,
+    }),
+    validate: (value) => {
+      if (typeof value === 'undefined' && required) return 'Cannot be empty'
+      if (max && value && value.length > max)
+        return `Cannot be more than ${max} items`
+    },
+  },
 })
 
-const multipleMediaWithFallback = ({
-  label = 'Multi-Assets',
-  name = 'multipleAssets',
+const linkWithMedia = ({
+  label = 'Link',
+  name = 'link',
   required = true,
-  min = 1,
-  limit = 100,
+  list = false,
+  max = null,
 }) => ({
   label,
   name,
-  type: 'object',
-  list: true,
-  ui: {
-    validate: (value) => {
-      if (typeof value === 'undefined') return 'Cannot be empty'
-
-      if (value && value.length > limit) {
-        return `Cannot be more than ${limit} items`
-      }
-
-      if (value && value.length < min) {
-        return `Cannot be less than ${min} items`
-      }
-    },
-    itemProps: (item) => {
-      return {
-        label: `${item?.media?.caption}`,
-      }
-    },
-  },
-  fields: [mediaMobileFallback({ label: 'Media', name: 'media', required })],
-})
-
-const linkWithMedia = ({ label = 'Link', name = 'link' }) => ({
-  label,
-  name,
+  required,
+  list,
   type: 'object',
   fields: [
     {
@@ -219,22 +258,18 @@ const linkWithMedia = ({ label = 'Link', name = 'link' }) => ({
       name: 'url',
       required: true,
     },
-    media({ label: 'Media', name: 'media' }),
+    media({ label: 'Media', name: 'media', required }),
   ],
-})
-
-const internalLinkWithMedia = ({
-  label = 'Link',
-  name = 'link',
-  collections,
-}) => ({
-  label,
-  name,
-  type: 'object',
-  fields: [
-    internalLink({ collections }),
-    media({ label: 'Media', name: 'media' }),
-  ],
+  ui: {
+    itemProps: (item) => ({
+      label: `${item?.text}`,
+    }),
+    validate: (value) => {
+      if (typeof value === 'undefined' && required) return 'Cannot be empty'
+      if (max && value && value.length > max)
+        return `Cannot be more than ${max} items`
+    },
+  },
 })
 
 export const firstLayerBlocks = {
@@ -243,7 +278,6 @@ export const firstLayerBlocks = {
   stringList,
   colorPallete,
   media,
-  multipleMediaWithFallback,
   mediaMobileFallback,
   linkWithMedia,
   internalLink,

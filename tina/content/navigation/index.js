@@ -11,26 +11,7 @@ const header = {
       label: 'Title',
       name: 'title',
     },
-    {
-      type: 'object',
-      label: 'Links',
-      name: 'links',
-      list: true,
-      fields: [link()],
-      ui: {
-        itemProps: (item) => {
-          if (!item) return
-          return {
-            label: `${item?.link?.text}`,
-          }
-        },
-        validate: (value) => {
-          if (value && value.length > 1) {
-            return `Cannot be more than ${1} items`
-          }
-        },
-      },
-    },
+    link({ name: 'links', label: 'Links', list: true, required: true, max: 1 }),
   ],
 }
 
@@ -44,26 +25,7 @@ const footer = {
       label: 'Title',
       name: 'title',
     },
-    {
-      type: 'object',
-      label: 'Links',
-      name: 'links',
-      list: true,
-      fields: [link()],
-      ui: {
-        itemProps: (item) => {
-          if (!item) return
-          return {
-            label: `${item?.link?.text}`,
-          }
-        },
-        validate: (value) => {
-          if (value && value.length > 3) {
-            return `Cannot be more than ${3} items`
-          }
-        },
-      },
-    },
+    link({ name: 'links', label: 'Links', list: true, required: true, max: 3 }),
   ],
 }
 
@@ -78,10 +40,8 @@ export const navigation = {
         title: 'Header title',
         links: [
           {
-            link: {
-              text: 'Home',
-              url: '/',
-            },
+            text: 'Home',
+            url: '/',
           },
         ],
       },
@@ -89,10 +49,8 @@ export const navigation = {
         title: 'Footer',
         links: [
           {
-            link: {
-              text: 'Home',
-              url: '/',
-            },
+            text: 'Home',
+            url: '/',
           },
         ],
       },

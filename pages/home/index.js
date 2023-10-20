@@ -10,10 +10,12 @@ import s from './home.module.scss'
 
 const pageId = 'home'
 
-export default function Home({ home }) {
-  const { sections, global } = useTinaObjects(home, pageId)
-  const { hero } = sections
+export default function Home({ serverData }) {
+  const { hero, sections, global } = useTinaObjects(serverData, pageId)
+  const { secondFold } = sections
   const { navigation } = global
+  const { firstFold } = hero
+  const { opacity, text } = secondFold
   const [titleSplitted, setTitleSplitted] = useState()
 
   useEffect(() => {
@@ -44,11 +46,11 @@ export default function Home({ home }) {
 
   return (
     <Layout theme="dark" className={s.home} {...navigation}>
-      <section className={s.content} data-tina-field={tinaField(hero)}>
+      <section className={s.content} data-tina-field={tinaField(secondFold)}>
         <h1
           className={s.title}
-          style={{ opacity: hero.opacity }}
-          data-tina-field={tinaField(hero, 'text')}
+          style={{ opacity }}
+          data-tina-field={tinaField(secondFold, 'text')}
         >
           <SplitText
             ref={(node) => {
@@ -56,7 +58,7 @@ export default function Home({ home }) {
             }}
             type="words"
           >
-            {hero.text}
+            {firstFold.title + text}
           </SplitText>
         </h1>
       </section>
@@ -65,7 +67,7 @@ export default function Home({ home }) {
 }
 
 export async function getStaticProps() {
-  const [home] = await Promise.all([
+  const [serverData] = await Promise.all([
     client.queries[pageId]({
       relativePath: 'home.md',
     }),
@@ -73,7 +75,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      home,
+      serverData,
       id: pageId,
     }, // will be passed to the page component as props
   }

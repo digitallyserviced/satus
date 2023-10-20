@@ -2,8 +2,27 @@ import { Collection } from '../../'
 import { slider } from '../../custom-components/slider'
 
 const hero = {
-  name: 'hero',
+  name: 'firstFold', // Don't use word hero in here
   label: 'Hero',
+  type: 'object',
+  fields: [
+    {
+      name: 'title',
+      label: 'Title',
+      type: 'string',
+      required: true,
+    },
+  ],
+  ui: {
+    defaultItem: {
+      title: 'Hero',
+    },
+  },
+}
+
+const fold = {
+  name: 'secondFold',
+  label: 'Fold',
   type: 'object',
   fields: [
     {
@@ -48,7 +67,9 @@ const collection = new Collection(
   'tina/content/pages/home',
   'md',
 )
-collection.setFields = [hero]
+
+collection.setHero = [hero]
+collection.setFields = [fold]
 collection.setUi = () => '/home'
 
 export const homeCollection = collection

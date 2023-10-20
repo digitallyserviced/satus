@@ -1,12 +1,19 @@
 import { convertArrayToObject, shortenObjectKeys } from 'libs/utils'
 import { useTina } from 'tinacms/dist/react'
 
+// Hook for converting array to objets and parse variables names
 export const useTinaObjects = (input, pageId) => {
+  let hero = {}
   let global = { navigation: {} }
   let sections = {}
   const { data } = useTina({
     ...input,
   })
+
+  if (data[pageId].hero) {
+    hero = convertArrayToObject(data[pageId].hero)
+    hero = shortenObjectKeys(hero, 'Hero')
+  }
 
   if (data[pageId].global) {
     global = convertArrayToObject(data[pageId].global)
@@ -18,5 +25,5 @@ export const useTinaObjects = (input, pageId) => {
     sections = shortenObjectKeys(sections, 'Sections')
   }
 
-  return { global, sections, data }
+  return { hero, global, sections, data }
 }

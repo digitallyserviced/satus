@@ -14,30 +14,24 @@ sections:
       LABORAT. INCEPTUM PULCHRUM, STUDIUM NOSTRUM LUCIDUM, FAMA ET GLORIA NOBIS,
       SIC SIT PERPETUUM.
     opacity: 1
-    _template: hero
+    _template: secondFold
 global:
   - header:
-      title: header title
+      title: Header title
       links:
-        - link:
-            text: debug
-            url: /_debug/orchestra
+        - text: home
+          url: 'https://studiofreight.com'
     footer:
-      title: footer
+      title: Footer
       links:
-        - link:
-            text: mail
-            url: 'mailto:contact@studiofreight.com'
-        - link:
-            text: contact
-            url: /contact
-        - link:
-            text: twitter
-            url: 'https://twitter.com/studiofreight'
+        - text: mail
+          url: 'mailto:contact@studiofreight.com'
+        - text: contact
+          url: 'https://studiofreight.com'
+        - text: twitter
+          url: 'https://twitter.com/studiofreight'
     _template: navigation
-  - title: Satus
-    description: By Studio Freight
-    image: /cms/sf-og.jpg
-    twitterHandle: "@studiofreight'"
-    _template: metadata
+hero:
+  - title: Hero
+    _template: firstFold
 ---
