@@ -32,7 +32,16 @@ const nextConfig = {
     // ADD in case you need to import SVGs in next/image component
     // dangerouslyAllowSVG: true,
     // contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    domains: ['assets.studiofreight.com', 'assets.tina.io'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'assets.tina.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'assets.studiofreight.com',
+      },
+    ],
     formats: ['image/avif', 'image/webp'],
   },
   sassOptions: {
