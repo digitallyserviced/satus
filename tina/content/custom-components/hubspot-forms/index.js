@@ -28,6 +28,7 @@ export const hubspotForms = () => ({
             onValueChange={(e) => {
               input.onChange(e)
             }}
+            value={input.value}
           >
             <SelectPrimitive.Trigger className="inline-flex items-center justify-center rounded px-[15px] text-[13px] leading-none h-[35px] gap-[5px] bg-white  shadow-[0_2px_10px] shadow-black/10 hover:bg-mauve3 focus:shadow-[0_0_0_2px] focus:shadow-black">
               <SelectPrimitive.Value placeholder="Pick a Form" />

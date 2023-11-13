@@ -23,7 +23,7 @@ export const slider = ({
     component: wrapFieldsWithMeta(({ input }) => {
       const [paneControl, setPaneControl] = React.useState(null)
       const elementRef = React.useRef(null)
-      params[sliderProps.label] = sliderProps.defaultValue
+      params[sliderProps.label] = input.value ?? sliderProps.defaultValue
 
       React.useEffect(() => {
         const pane = new Pane({ container: elementRef.current })

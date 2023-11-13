@@ -51,6 +51,11 @@ const fold = {
         step: 0.05,
       },
     }),
+    {
+      name: 'hero',
+      type: 'image',
+      label: 'Hero Image',
+    },
   ],
   ui: {
     defaultItem: {

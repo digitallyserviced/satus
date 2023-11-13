@@ -3,6 +3,13 @@ import { homeCollection } from './content/pages/home/index.js'
 
 const branch = process.env.VERCEL_GIT_COMMIT_REF || 'with-tina-cms' // change this to your currrent branch
 
+// const cloudinaryConfig = {
+//   loadCustomStore: async () => {
+//     const pack = await import('next-tinacms-cloudinary')
+//     return pack.TinaCloudCloudinaryMediaStore
+//   },
+// }
+
 export default defineConfig({
   branch,
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
@@ -25,6 +32,10 @@ export default defineConfig({
       publicFolder: 'public',
     },
   },
+  // media: {
+  //   ...cloudinaryConfig,
+  // },
+
   schema: {
     collections: [homeCollection],
   },
