@@ -182,17 +182,20 @@ const nextConfig = {
       },
     ]
   },
-  redirects: async () => {
+  async redirects() {
     return [
       {
         source: '/home',
         destination: '/',
         permanent: true,
       },
+    ]
+  },
+  async rewrites() {
+    return [
       {
         source: '/admin',
         destination: '/admin/index.html',
-        permanent: true,
       },
     ]
   },
